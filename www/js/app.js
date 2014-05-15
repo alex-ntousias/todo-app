@@ -5,13 +5,14 @@ var active = "";
 var completed = "list-group-item-success";
 
 app.controller("TodoCtrl", function($scope) {
+    $scope.tasks = [];
+    
     document.addEventListener("deviceready", function() {
         $scope.tasks = loadFromLocalStorage();
         console.log("Device is ready, loaded: " + $scope.tasks);
         $scope.$apply();
     }, false);
     
-    $scope.tasks = [];
     $scope.addNewTask = function(newTask) {
         if (newTask) {
             $scope.tasks.push({"text": newTask, "status": active});
